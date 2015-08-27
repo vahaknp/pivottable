@@ -132,27 +132,27 @@ callWithJQuery ($) ->
     #default aggregators & renderers use US naming and number formatting
     aggregators = do (tpl = aggregatorTemplates) -> 
         "Count":                tpl.count(usFmtInt)
-        "Count Unique Values":  tpl.countUnique(usFmtInt)
-        "List Unique Values":   tpl.listUnique(", ")
-        "Sum":                  tpl.sum(usFmt)
-        "Integer Sum":          tpl.sum(usFmtInt)
-        "Average":              tpl.average(usFmt)
-        "Minimum":              tpl.min(usFmt)
-        "Maximum":              tpl.max(usFmt)
-        "Sum over Sum":         tpl.sumOverSum(usFmt)
-        "80% Upper Bound":      tpl.sumOverSumBound80(true, usFmt)
-        "80% Lower Bound":      tpl.sumOverSumBound80(false, usFmt)
-        "Sum as Fraction of Total":     tpl.fractionOf(tpl.sum(),   "total", usFmtPct)
-        "Sum as Fraction of Rows":      tpl.fractionOf(tpl.sum(),   "row",   usFmtPct)
-        "Sum as Fraction of Columns":   tpl.fractionOf(tpl.sum(),   "col",   usFmtPct)
+        # "Count Unique Values":  tpl.countUnique(usFmtInt)
+        # "List Unique Values":   tpl.listUnique(", ")
+        # "Sum":                  tpl.sum(usFmt)
+        # "Integer Sum":          tpl.sum(usFmtInt)
+        # "Average":              tpl.average(usFmt)
+        # "Minimum":              tpl.min(usFmt)
+        # "Maximum":              tpl.max(usFmt)
+        # "Sum over Sum":         tpl.sumOverSum(usFmt)
+        # "80% Upper Bound":      tpl.sumOverSumBound80(true, usFmt)
+        # "80% Lower Bound":      tpl.sumOverSumBound80(false, usFmt)
+        # "Sum as Fraction of Total":     tpl.fractionOf(tpl.sum(),   "total", usFmtPct)
+        # "Sum as Fraction of Rows":      tpl.fractionOf(tpl.sum(),   "row",   usFmtPct)
+        # "Sum as Fraction of Columns":   tpl.fractionOf(tpl.sum(),   "col",   usFmtPct)
         "Count as Fraction of Total":   tpl.fractionOf(tpl.count(), "total", usFmtPct)
         "Count as Fraction of Rows":    tpl.fractionOf(tpl.count(), "row",   usFmtPct)
         "Count as Fraction of Columns": tpl.fractionOf(tpl.count(), "col",   usFmtPct)
 
     renderers =
         "Table":          (pvtData, opts) ->   pivotTableRenderer(pvtData, opts)
-        "Table Barchart": (pvtData, opts) -> $(pivotTableRenderer(pvtData, opts)).barchart()
-        "Heatmap":        (pvtData, opts) -> $(pivotTableRenderer(pvtData, opts)).heatmap()
+        # "Table Barchart": (pvtData, opts) -> $(pivotTableRenderer(pvtData, opts)).barchart()
+        # "Heatmap":        (pvtData, opts) -> $(pivotTableRenderer(pvtData, opts)).heatmap()
         "Row Heatmap":    (pvtData, opts) -> $(pivotTableRenderer(pvtData, opts)).heatmap("rowheatmap")
         "Col Heatmap":    (pvtData, opts) -> $(pivotTableRenderer(pvtData, opts)).heatmap("colheatmap")
 
@@ -425,7 +425,7 @@ callWithJQuery ($) ->
                 x = spanSize(colKeys, parseInt(i), parseInt(j))
                 if x != -1
                     th = document.createElement("th")
-                    th.className = "pvtColLabel"
+                    th.className = "pvtColLabel col#{i}"
                     th.innerHTML = colKey[j]
                     th.setAttribute("colspan", x)
                     if parseInt(j) == colAttrs.length-1 and rowAttrs.length != 0
@@ -461,7 +461,7 @@ callWithJQuery ($) ->
                 x = spanSize(rowKeys, parseInt(i), parseInt(j))
                 if x != -1
                     th = document.createElement("th")
-                    th.className = "pvtRowLabel"
+                    th.className = "pvtRowLabel row#{i}"
                     th.innerHTML = txt
                     th.setAttribute("rowspan", x)
                     if parseInt(j) == rowAttrs.length-1 and colAttrs.length !=0
@@ -953,5 +953,4 @@ callWithJQuery ($) ->
         barcharter ".pvtTotal.colTotal"
 
         return this
-
 
